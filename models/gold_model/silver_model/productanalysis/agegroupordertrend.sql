@@ -4,7 +4,7 @@ SELECT
         WHEN c.age BETWEEN 26 AND 35 THEN '26-35'
         WHEN c.age BETWEEN 36 AND 45 THEN '36-45'
         ELSE 46+
-        END AS age_group,
+    END AS age_group,
     p.product_category,
     COUNT(*) AS total_order
 FROM 
