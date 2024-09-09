@@ -1,6 +1,7 @@
 SELECT 
     dc.center_id,
-    COUNT(DISTINCT o.order_id) AS total_order,
+    dc.center_name,
+    COUNT(o.order_id) AS total_order,
     CAST(SUM(oi.sale_price) AS int) AS total_sales
 FROM
     {{ ref( "thelook_distribution_center")}} dc 
@@ -13,5 +14,5 @@ ON p.product_id = oi.product_id
 JOIN 
     {{ ref("thelook_orders")}} o 
 ON oi.order_item_id = o.order_id
-GROUP BY center_id
+GROUP BY center_id, center_name
 ORDER BY total_order DESC
